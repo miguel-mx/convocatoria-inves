@@ -14,14 +14,15 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-md-4">
+                <a class="btn btn-default" href="{{ path('registro_all') }}" role="button">Todas las solicitudes</a>
+            </div>
+        </div>
+        <div class="page-header"></div>
+        <div class="row">
             <div class="col-md-6">
-                <h2>Matemáticas {{ matematicas|length }}</h2>
-                <div class="table table-responsive">
-                    <thead>
-                    <tr>
-                        <th>Nombre</th>
-                    </tr>
-                    </thead>
+                <h3 class="text-muted">Matemáticas<small> <span class="badge"> {{ matematicas|length }}</span></small></h3>
+                <table class="table table-responsive">
                     <tbody>
                     {% for mate in matematicas %}
                         <tr>
@@ -29,16 +30,11 @@
                         </tr>
                     {% endfor %}
                     </tbody>
-                </div>
+                </table>
             </div>
             <div class="col-md-6">
-                <h2>Biomatemáticas {{ biomatematicas|length }}</h2>
-                <div class="table table-responsive">
-                    <thead>
-                    <tr>
-                        <th>Nombre</th>
-                    </tr>
-                    </thead>
+                <h3 class="text-muted">Biomatemáticas<small> <span class="badge">{{ biomatematicas|length }}</span></small></h3>
+                <table class="table table-responsive">
                     <tbody>
                     {% for biomat in biomatematicas %}
                         <tr>
@@ -46,7 +42,7 @@
                         </tr>
                     {% endfor %}
                     </tbody>
-                </div>
+                </table>
             </div>
         </div>
 

@@ -30,17 +30,17 @@ class AdminController extends Controller
     public function indexAction()
     {
 
+        // Redirecto to registro/index
+        return $this->redirectToRoute('registro_index');
 
-        $em = $this->getDoctrine()->getManager();
-
-        $registros = $em->getRepository('RegistroBundle:Registro')->findAll();
-        #$registros = $em->getRepository('RegistroBundle:Registro')->findByActivo(1);
-
-        return $this->render('registro/index.html.twig', array(
-            'registros' => $registros,
-        ));
-
-
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $registros = $em->getRepository('RegistroBundle:Registro')->findAll();
+//        #$registros = $em->getRepository('RegistroBundle:Registro')->findByActivo(1);
+//
+//        return $this->render('registro/index.html.twig', array(
+//            'registros' => $registros,
+//        ));
     }
 
 
