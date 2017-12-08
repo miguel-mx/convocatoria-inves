@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="alert alert-dismissable alert-success">
+            <strong>
+                <i class="fa fa-check"></i>
+                Hemos recibido su CARTA de recomendación de apoyo a: {{ entity.nombre|title }} {{ entity.paterno|title }} {{ entity.materno|title }}</strong>
+            <br>
+            <br>
+            <p class="small">Si no recibe el correo de confirmación puedes verificar en tu bandeja de correos no deseados,
+                si no lo ha recibido puedes escribir a <strong>webmaster<i class="fa fa-at"></i>matmor.unam.mx</strong>
+                para confirmar tu registro.
+            </p>
+        </div>
+
+        <div class="alert alert-dismissable alert-success">
+            <strong>
+                <i class="fa fa-check"></i>
+                We have received your RECOMMENDATION in favour of: {{ entity.nombre|title }} {{ entity.paterno|title }} {{ entity.materno|title }}</strong>
+            <br>
+            <br>
+            <p class="small">If you do not receive the confirmation email you must check in your mailbox spam, if you have not received it must write to
+                <strong>webmaster<i class="fa fa-at"></i>matmor.unam.mx</strong>
+                to confirm your registration.
+            </p>
+        </div>
+
+        <div class="col-lg-7 col-lg-offset-5">
+            <a href="http://www.matmor.unam.mx/" type="button"  class="btn btn-primary">Finalizar</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

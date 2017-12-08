@@ -1,0 +1,50 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+   # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+            in_memory:
+                memory:
+                    users:
+                        ccm17:
+                            password: $2a$12$/qfZSN9awsI3rlyRNMt1me0Cnbqe186grR7T7mhZ6eYLbWnGNQjSW 
+                            roles: 'ROLE_ADMIN'
+                        admin:
+                            password: $2a$12$L4k/IkqiBjC4YhKu9kox2OyKRgO1qIytoQwW4Xe3WklTULdFUowqm
+                            roles: 'ROLE_ADMIN'
+                        consulta:
+                            password: $2a$12$0feXLELVK78H0IyD7MuQN.y9B1nLvfAhFhTJtyIsm9/N/miV0sZP2 
+                            roles: 'ROLE_CONSULTA'
+
+
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
+
+    firewalls:
+            # disables authentication for assets and the profiler, adapt it according to your needs
+            dev:
+                pattern: ^/(_(profiler|wdt)|css|images|js)/
+                security: false
+
+            main:
+                anonymous: ~
+                # activate different ways to authenticate
+
+                form_login:
+                    login_path: /login
+                    check_path: /login_check
+
+                logout:
+                    path:   /logout
+                    target: /login
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/registro/.+/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/registro/.+/.+/.+/.+/.+/recom, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/consulta, roles: [ROLE_CONSULTA, ROLE_ADMIN] }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/, roles: ROLE_ADMIN }

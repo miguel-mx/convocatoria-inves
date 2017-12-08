@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registro</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ registro.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ registro.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Materno</th>
+                <td>{{ registro.materno }}</td>
+            </tr>
+            <tr>
+                <th>Paterno</th>
+                <td>{{ registro.paterno }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ registro.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ registro.mail }}</td>
+            </tr>
+            <tr>
+                <th>Solicitud</th>
+                <td><a href="{{ vich_uploader_asset(registro, 'solicitudFile') }}"  target="_blank"/>{{ registro.solicitudName }}</td>
+            </tr>
+            <tr>
+                <th>Cv</th>
+                <td><a href="{{ vich_uploader_asset(registro, 'cvFile') }}"  target="_blank"/>{{ registro.CvName }}</td>
+            </tr>
+            <tr>
+                <th>Comprobante</th>
+                <td><td><a href="{{ vich_uploader_asset(registro, 'comprobanteFile') }}"  target="_blank"/>{{ registro.comprobanteName }}</td></td>
+            </tr>
+            <tr>
+                <th>Proyecto</th>
+                <td><td><a href="{{ vich_uploader_asset(registro, 'proyectoFile') }}"  target="_blank"/>{{ registro.proyectoName }}</td></td>
+            </tr>
+            <tr>
+                <th>Articulos</th>
+                <td><td><a href="{{ vich_uploader_asset(registro, 'articulosFile') }}"  target="_blank"/>{{ registro.articulosName }}</td></td>
+            </tr>
+            <tr>
+                <th>Ref1nombre</th>
+                <td>{{ registro.ref1nombre }}</td>
+            </tr>
+            <tr>
+                <th>Ref1mail</th>
+                <td>{{ registro.ref1mail }}</td>
+            </tr>
+            <tr>
+                <th>Ref1recom</th>
+                <td><td><a href="{{ vich_uploader_asset(registro, 'ref1recomFile') }}"  target="_blank"/>{{ registro.ref1recomName }}</td></td>
+            </tr>
+            <tr>
+                <th>Ref2nombre</th>
+                <td>{{ registro.ref2nombre }}</td>
+            </tr>
+            <tr>
+                <th>Ref2mail</th>
+                <td>{{ registro.ref2mail }}</td>
+            </tr>
+            <tr>
+                <th>Ref2recom</th>
+                <td><td><a href="{{ vich_uploader_asset(registro, 'ref2recomFile') }}"  target="_blank"/>{{ registro.ref2recomName }}</td></td>
+            </tr>
+            <tr>
+                <th>Activo</th>
+                <td>{% if registro.activo %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('registro_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('registro_edit', { 'id': registro.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

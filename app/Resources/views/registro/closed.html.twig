@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'registro/form_errors.html.twig' %}
+
+{% block nav %}
+    <li class="active"><a href="#">{{ 'Formulario de solicitud'|trans }} </a></li>
+    <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'es'})) }}"> <span class="lang-sm lang-lbl" lang="es"></span></a></li>
+    <li><a href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"> <span class="lang-sm lang-lbl" lang="en"></span> </a></li>
+{% endblock %}
+
+{% block body %}
+
+  <div class="container">
+
+        {% block info %}
+
+            <div class="alert alert-danger" role="alert">
+                <strong>Deadline for applications: 26 Nov 2017</strong><br><br>
+            </div>
+
+        {% endblock %}
+
+    </div>
+
+{% endblock %}
