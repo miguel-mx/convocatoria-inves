@@ -272,6 +272,13 @@ class Registro
      */
     private $activo;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="biomat", type="boolean", nullable=true)
+     */
+    private $biomat;
+
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -811,9 +818,32 @@ class Registro
     }
 
     /**
-     * Get activo
+     * Get biomat
      *
      * @return boolean 
+     */
+    public function getBiomat()
+    {
+        return $this->biomat;
+    }
+
+    /**
+     * Set Biomat
+     *
+     * @param boolean $biomat
+     * @return Registro
+     */
+    public function setBiomat($biomat)
+    {
+        $this->biomat = $biomat;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
      */
     public function getActivo()
     {

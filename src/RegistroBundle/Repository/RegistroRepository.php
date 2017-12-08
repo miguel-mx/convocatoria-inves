@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class RegistroRepository extends EntityRepository
 {
+
+    public function findAllSeleccion($biomat)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT r FROM RegistroBundle:Registro r
+                    WHERE r.activo = :activo
+                    AND r.biomat = :biomat
+                    ORDER BY r.paterno ASC"
+            )
+            ->setParameter('activo', 1)
+            ->setParameter('biomat', $biomat)
+        ->getResult();
+    }
+
 }

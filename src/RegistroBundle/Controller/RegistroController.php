@@ -27,9 +27,28 @@ class RegistroController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $registros = $em->getRepository('RegistroBundle:Registro')->findAll();
+        $matematicas = $em->getRepository('RegistroBundle:Registro')->findAllSeleccion(0);
+        $biomatematicas = $em->getRepository('RegistroBundle:Registro')->findAllSeleccion(1);
 
         return $this->render('registro/index.html.twig', array(
+            'matematicas' => $matematicas,
+            'biomatematicas' => $biomatematicas,
+        ));
+    }
+
+    /**
+     * Lists all Registro entities.
+     *
+     * @Route("/all", name="registro_all")
+     * @Method("GET")
+     */
+    public function todosAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $registros = $em->getRepository('RegistroBundle:Registro')->findAll();
+
+        return $this->render('registro/all.html.twig', array(
             'registros' => $registros,
         ));
     }

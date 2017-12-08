@@ -57,8 +57,6 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('RegistroBundle:Registro')->find($id);
 
-
-
         $formEval = $this->createFormBuilder($entity)
 
             ->add('activo', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
@@ -69,10 +67,15 @@ class AdminController extends Controller
                 'required'=>false,
                 'placeholder'=>false,
             ))
-
-
+            ->add('biomat', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', array(
+                'choices'=>array(
+                    true=>'Si',
+                    false=>'No'),
+                'expanded'=>true,
+                'required'=>false,
+                'placeholder'=>false,
+            ))
             ->getForm();
-
 
         $formEval->handleRequest($request);
 
@@ -81,13 +84,10 @@ class AdminController extends Controller
                 $em->persist($entity);
                 $em->flush();
 
-
-
             return $this->redirectToRoute('registro_show', array('id' => $id));
-
         }
         // $form   = $this->createForm($formEval, $entity);
-        return $this->render('admin/eval.html.twig', array('registro' => $formEval->createView(),'id'=> $id));
+        return $this->render('admin/eval.html.twig', array('form' => $formEval->createView(),'registro'=> $entity));
         //return $this->redirect($this->generateUrl('registro_show', array('id' => $id)));
 
     }
